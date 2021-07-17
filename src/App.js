@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import ComponentChild from './components/ComponentChild';
+import { useToggle } from './contexts/ToggleProvider';
 
 function App() {
+  const {estadoPai, handleClickEstadoPai} = useToggle()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <div>
+        <h1>Componente Pai</h1>
+        <button onClick={handleClickEstadoPai} >Clique aqui sou o pai</button>
+        {estadoPai&&<p>Aberto!</p>}
+        <ComponentChild/>
+      </div>
     </div>
   );
 }
